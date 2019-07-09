@@ -10,6 +10,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { importExpr } from '@angular/compiler/src/output/output_ast';
 import {FormsModule  } from "@angular/forms";
 import { ChatService } from './services/chat.service';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -21,7 +22,7 @@ import { ChatService } from './services/chat.service';
   ],
   providers:[ChatService]
   ,
-  declarations: [ AppComponent, ChatComponent ],
+  declarations: [ AppComponent, ChatComponent, LoginComponent ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

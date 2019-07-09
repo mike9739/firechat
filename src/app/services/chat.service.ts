@@ -11,12 +11,14 @@ export class ChatService {
   public chats:Message[]=[]
   constructor(private afs: AngularFirestore) { }
   loadMessages(){
-    this.itemsCollection = this.afs.collection<Message>('chats')
+    this.itemsCollection = this.afs.collection<Message>('chats',ref => ref.orderBy('fecha','desc').limit(10))
     return this.itemsCollection.valueChanges().pipe(
       map((mensajes:Message[])=>{
-        console.log(mensajes);
-        this.chats= mensajes;
-        return mensajes;
+        this.chats = []
+        for (const mensaje of mensajes) {
+            this.chats.unshift(mensaje)          
+        }
+        return this.chats;
       })
     )
     
